@@ -233,8 +233,8 @@ export default function App() {
               </div>
             </div>
 
-            {/* Right Column: Rim-Lit Hand Holding Tilted Smartphone */}
-            <div className="relative z-10 lg:col-span-7 lg:-mr-6">
+            {/* Right Column: Hero Smartphone Showcase */}
+            <div className="relative z-10 flex justify-center lg:col-span-7 lg:justify-end lg:pr-8">
               <NebulaHomePhone highlightedFeature={highlightedFeature} />
             </div>
           </div>

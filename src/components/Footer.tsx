@@ -10,6 +10,8 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ logoSrc, onOpenLegal, onGoHome }) => {
+  const currentYear = new Date().getFullYear();
+
   const handleLegalClick = (event: React.MouseEvent<HTMLAnchorElement>, doc: LegalDocType) => {
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0) {
       return;
@@ -199,9 +201,15 @@ export const Footer: React.FC<FooterProps> = ({ logoSrc, onOpenLegal, onGoHome }
 
         {/* Bottom Hairline Bar */}
         <div className="mt-12 flex flex-col gap-4 border-t border-white/[0.06] pt-6 text-[12px] text-[#666462] sm:flex-row sm:items-center sm:justify-between">
-          <p className="leading-relaxed">
-            Not affiliated with Google LLC, YouTube Music, Spotify, Discord, Musixmatch, or Deezer.
-          </p>
+          <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-2">
+            <span className="font-medium text-[#8f8c89]">Vibra Music &copy; {currentYear}</span>
+            <span aria-hidden="true" className="hidden sm:inline text-[#454341]">
+              ·
+            </span>
+            <p className="leading-relaxed">
+              Not affiliated with Google LLC, YouTube Music, Spotify, Discord, Musixmatch, or Deezer.
+            </p>
+          </div>
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1 shrink-0">
             <a
               href={getPathForLegalDoc('privacy')}

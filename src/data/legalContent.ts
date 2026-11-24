@@ -203,20 +203,26 @@ export const LEGAL_DOCUMENTS: Record<LegalDocType, LegalDocumentData> = {
       {
         id: 'third-party-integrations',
         number: '04',
-        heading: 'Direct Third-Party Services & Optional Integrations',
+        heading: 'Direct Third-Party Services, Google API Limited Use & Optional Integrations',
         paragraphs: [
+          'Vibra Music\'s use and transfer to any other app of information received from Google APIs adheres to the Google API Services User Data Policy, including the Limited Use requirements.',
           'When you stream content or explicitly enable external connectors, your device communicates directly with the respective third-party provider over HTTPS (cleartext HTTP traffic is disabled at the manifest level via usesCleartextTraffic="false"). Vibra Music does not proxy or log your credentials through intermediary developer servers. Each external provider acts as an independent data controller governed by its own privacy terms:',
         ],
         bullets: [
           {
-            label: 'YouTube Music & Google Sign-In',
+            label: 'Google APIs & YouTube Data Limited Use Compliance',
             detail:
-              'Search queries, audio stream requests, PoToken session generation, and optional Google account sign-in interact directly with YouTube / Google InnerTube endpoints.',
+              'When you choose to sign in with your Google or YouTube account, credentials and OAuth tokens are stored exclusively inside hardware-wrapped Android Keystore EncryptedSharedPreferences on your local device. We access your account strictly to retrieve your playlists, liked tracks, and listening suggestions. We do NOT transfer, sell, disclose, or broker your Google user data to any third party, data broker, advertising network, or analytics vendor. Google user data is NEVER used for serving advertisements or promotional profiling. You can disconnect your Google account at any time in app settings or revoke access via Google Account Permissions (https://myaccount.google.com/permissions).',
+          },
+          {
+            label: 'YouTube Music & Audio Playback',
+            detail:
+              'Search queries, audio stream requests, PoToken session generation, and playback interactions communicate directly between your device and official YouTube / Google InnerTube endpoints.',
           },
           {
             label: 'Google Drive Backup (Opt-In)',
             detail:
-              'If enabled under Settings → Backup and Restore, Vibra Music writes structured backups of your listening statistics and preferences directly into your private Google Drive app storage on your chosen cadence (Off, Daily, Weekly, or Monthly). Maintainers have zero visibility into your Google Drive files.',
+              'If enabled under Settings → Backup and Restore, Vibra Music writes encrypted structured backups of your listening statistics and preferences directly into your private Google Drive application folder (drive.appdata scope) on your chosen cadence (Off, Daily, Weekly, or Monthly). Maintainers have zero visibility into your Google Drive files, and no Google Drive files are accessible to third parties.',
           },
           {
             label: 'Discord Rich Presence (Opt-In)',
