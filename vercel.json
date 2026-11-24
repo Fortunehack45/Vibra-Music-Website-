@@ -10,7 +10,7 @@
       "destination": "/api/music/$1"
     },
     {
-      "source": "/((?!privacy|terms|security|license|robots\\.txt|sitemap\\.xml|api).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ],
