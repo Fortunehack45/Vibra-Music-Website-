@@ -1,0 +1,6 @@
+{
+  "name": "Nebula — Music App UI/UX",
+  "description": "Nebula Music App UI/UX interactive showcase featuring an AI-powered smart home screen, Artist of the Day spotlight, and global artist discovery.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

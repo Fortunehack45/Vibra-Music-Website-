@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --nebula-bg: #080707;
+    --nebula-surface: #121111;
+    --vibra-purple: #a855f7;
+  }
+
+  html {
+    background-color: var(--nebula-bg);
+    color: #f2f1ef;
+    font-family: var(--font-sans);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--nebula-bg);
+    overflow-x: hidden;
+  }
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes eqPulse {
+  0%, 100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+
+.animate-eq-1 {
+  animation: eqPulse 0.75s ease-in-out infinite;
+}
+
+.animate-eq-2 {
+  animation: eqPulse 0.55s ease-in-out 0.15s infinite;
+}
+
+.animate-eq-3 {
+  animation: eqPulse 0.85s ease-in-out 0.3s infinite;
+}
+
+@keyframes marqueeLoop {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* Smooth, zero-stutter, GPU-composited infinite horizontal marquee for the Vibra showcase ribbon */
+.animate-vibra-ribbon {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marqueeLoop 38s linear infinite;
+}
+
+/* Smooth infinite marquee for ecosystem integrations right below the hero */
+.animate-ecosystem-marquee {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marqueeLoop 34s linear infinite;
+}
+
+.marquee-hover-pause:hover .animate-ecosystem-marquee {
+  animation-play-state: paused;
+}
+
+.marquee-edge-fade {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 8%,
+    rgba(0, 0, 0, 1) 92%,
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 8%,
+    rgba(0, 0, 0, 1) 92%,
+    transparent 100%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-eq-1,
+  .animate-eq-2,
+  .animate-eq-3,
+  .animate-vibra-ribbon,
+  .animate-ecosystem-marquee {
+    animation: none;
+  }
+}
