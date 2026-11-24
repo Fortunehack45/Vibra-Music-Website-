@@ -61,7 +61,7 @@ export const LegalDocumentView: React.FC<LegalDocumentViewProps> = ({
     <div className="flex min-h-screen w-full flex-col overflow-x-hidden bg-[#080707] text-[#f2f1ef]">
       {/* Official Standalone Page Top Navigation Bar */}
       <header className="sticky top-0 z-30 border-b border-white/[0.07] bg-[#080707]/92 backdrop-blur-md">
-        <div className="mx-auto flex h-14 max-w-[1160px] items-center justify-between gap-3 px-4 sm:px-8 lg:px-12">
+        <div className="mx-auto flex h-14 max-w-[1160px] items-center px-4 sm:px-8 lg:px-12">
           <a
             href="/"
             onClick={handleBackClick}
@@ -71,31 +71,6 @@ export const LegalDocumentView: React.FC<LegalDocumentViewProps> = ({
             <img src={logoSrc} alt="" aria-hidden="true" className="h-3.5 w-3.5 opacity-85" />
             <span>Vibra Music</span>
           </a>
-
-          {/* Standalone Page Switcher (Privacy / Terms / Security / License) */}
-          <nav
-            aria-label="Official legal and policy pages"
-            className="no-scrollbar flex items-center gap-1 overflow-x-auto rounded-lg border border-white/[0.08] bg-[#121111] p-1"
-          >
-            {DOC_NAV_ITEMS.map((item) => {
-              const isCurrent = item.type === docType;
-              return (
-                <a
-                  key={item.type}
-                  href={getPathForLegalDoc(item.type)}
-                  aria-current={isCurrent ? 'page' : undefined}
-                  onClick={(e) => handleNavClick(e, item.type)}
-                  className={`rounded-md px-2.5 py-1.5 text-[12px] font-medium transition-colors whitespace-nowrap shrink-0 sm:px-3 ${
-                    isCurrent
-                      ? 'bg-white/[0.11] text-white'
-                      : 'text-[#8a8784] hover:text-[#d8d6d4]'
-                  }`}
-                >
-                  {item.label}
-                </a>
-              );
-            })}
-          </nav>
         </div>
       </header>
 

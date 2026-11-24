@@ -29,14 +29,14 @@ export const NebulaHomePhone: React.FC<NebulaHomePhoneProps> = ({ highlightedFea
         }}
       />
 
-      {/* Outer Edgeless Fade Container: Phone screen & bezel stay 100% solid & crisp, hand wrist blurs seamlessly into background */}
+      {/* Outer Edgeless Fade Container: Phone screen & bezel stay 100% solid & crisp, hand fades smoothly into background */}
       <div
         className="relative z-10 w-full"
         style={{
           WebkitMaskImage:
-            'radial-gradient(ellipse 78% 64% at 48% 42%, #000 66%, rgba(0,0,0,0.85) 74%, rgba(0,0,0,0.3) 82%, transparent 88%)',
+            'linear-gradient(to bottom, #000 0%, #000 76%, rgba(0,0,0,0.85) 80%, rgba(0,0,0,0.4) 84%, rgba(0,0,0,0.1) 86%, transparent 88%)',
           maskImage:
-            'radial-gradient(ellipse 78% 64% at 48% 42%, #000 66%, rgba(0,0,0,0.85) 74%, rgba(0,0,0,0.3) 82%, transparent 88%)',
+            'linear-gradient(to bottom, #000 0%, #000 76%, rgba(0,0,0,0.85) 80%, rgba(0,0,0,0.4) 84%, rgba(0,0,0,0.1) 86%, transparent 88%)',
         }}
       >
         {/* Frame Container keeping 682:1024 exact aspect ratio of the hand photo */}
@@ -75,20 +75,6 @@ export const NebulaHomePhone: React.FC<NebulaHomePhoneProps> = ({ highlightedFea
             src={HERO_HAND_CUTOUT_SRC}
             alt="Hand holding smartphone running Vibra Music with live word-synced lyrics"
             className="pointer-events-none relative z-20 h-full w-full object-contain"
-          />
-
-          {/* Layer 3: Soft Atmospheric Mist Blur at the lower wrist */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -bottom-2 inset-x-0 h-[24%] z-30"
-            style={{
-              background:
-                'linear-gradient(to bottom, transparent 0%, rgba(8, 7, 7, 0.4) 35%, rgba(8, 7, 7, 0.9) 75%, #080707 100%)',
-              backdropFilter: 'blur(10px)',
-              WebkitBackdropFilter: 'blur(10px)',
-              maskImage: 'linear-gradient(to bottom, transparent 0%, black 45%)',
-              WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, black 45%)',
-            }}
           />
         </div>
       </div>
