@@ -35,34 +35,21 @@ export const NebulaHomePhone: React.FC<NebulaHomePhoneProps> = ({ highlightedFea
         className="relative z-10 w-full"
         style={{
           WebkitMaskImage:
-            'linear-gradient(to bottom, #000 0%, #000 85%, rgba(0,0,0,0.85) 89%, rgba(0,0,0,0.35) 94%, transparent 98%)',
+            'linear-gradient(to bottom, #000 0%, #000 86%, rgba(0,0,0,0.85) 90%, rgba(0,0,0,0.3) 94%, transparent 98%)',
           maskImage:
-            'linear-gradient(to bottom, #000 0%, #000 85%, rgba(0,0,0,0.85) 89%, rgba(0,0,0,0.35) 94%, transparent 98%)',
+            'linear-gradient(to bottom, #000 0%, #000 86%, rgba(0,0,0,0.85) 90%, rgba(0,0,0,0.3) 94%, transparent 98%)',
         }}
       >
         {/* Frame Container keeping 682:1024 exact aspect ratio of the hand photo */}
         <div className="relative aspect-[682/1024] w-full">
-          {/* Layer 1: Solid Black Phone Frame Underlay (Prevents any atmospheric purple glow from leaking through) */}
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute z-0 bg-black"
-            style={{
-              left: '22.8%',
-              top: '6.7%',
-              width: '53.8%',
-              height: '69.8%',
-              borderRadius: 'clamp(24px, 11%, 44px)',
-            }}
-          />
-
-          {/* Layer 2: Phone Screen Video (Fits active OLED display opening with natural black bezel border) */}
+          {/* Layer 1: Phone Screen Video (Positioned strictly inside OLED display opening with zero bleed out) */}
           <div
             className="absolute z-10 overflow-hidden bg-black"
             style={{
-              left: '26.1%',
-              top: '8.4%',
-              width: '47.5%',
-              height: '66.4%',
+              left: '26.4%',
+              top: '8.6%',
+              width: '46.9%',
+              height: '66.0%',
               borderRadius: 'clamp(18px, 10.4%, 34px)',
             }}
           >
@@ -87,7 +74,7 @@ export const NebulaHomePhone: React.FC<NebulaHomePhoneProps> = ({ highlightedFea
             />
           </div>
 
-          {/* Layer 3: Hand and Phone Bezel Overlay (Screen cutout lets video shine through, hand & bezel overlap on top) */}
+          {/* Layer 2: Hand and Phone Bezel Overlay (Screen cutout lets video shine through, hand & bezel overlap on top) */}
           <img
             src={HERO_HAND_CUTOUT_SRC}
             width={682}
