@@ -68,7 +68,15 @@ export const LegalDocumentView: React.FC<LegalDocumentViewProps> = ({
             className="inline-flex min-h-[40px] items-center gap-2 text-[13px] text-[#b5b2af] transition-colors hover:text-white whitespace-nowrap shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a855f7]"
           >
             <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-            <img src={logoSrc} alt="" aria-hidden="true" className="h-3.5 w-3.5 opacity-85" />
+            <img
+              src={logoSrc}
+              alt=""
+              aria-hidden="true"
+              width={14}
+              height={14}
+              decoding="async"
+              className="h-3.5 w-3.5 opacity-85"
+            />
             <span>Vibra Music</span>
           </a>
         </div>

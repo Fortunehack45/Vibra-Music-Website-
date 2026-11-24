@@ -142,6 +142,10 @@ export const ArtistsDirectoryPhone: React.FC<ArtistsDirectoryPhoneProps> = ({
                     <img
                       src={artist.gridTileImage}
                       alt={`${artist.name} portrait`}
+                      width={120}
+                      height={120}
+                      loading="lazy"
+                      decoding="async"
                       referrerPolicy="no-referrer"
                       className={`h-full w-full object-cover transition-transform duration-300 group-hover:scale-110 ${
                         artist.id === 'billie-eilish' ? 'scale-[1.32] object-top' : ''

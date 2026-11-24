@@ -65,9 +65,9 @@ export function getLegalDocument(doc: LegalDocType): LegalDocumentData {
 export function getSeoMetadataForRoute(doc: LegalDocType | null): RouteSeoMetadata {
   if (!doc) {
     return {
-      title: 'Vibra Music — Official Aesthetic Music Player for Android',
+      title: 'Vibra Music – Modern Android Music Player | Official Website',
       description:
-        'Download Vibra Music, the free open-source music player and YouTube Music client with Hi-Res FLAC audio, on-device DSP Mix, word-synced lyrics, and frosted-glass UI.',
+        'Discover Vibra Music, a modern Android music player featuring offline playback, synchronized lyrics, high-quality audio, customizable playback and more.',
       canonicalPath: '/',
     };
   }

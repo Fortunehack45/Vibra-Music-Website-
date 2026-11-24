@@ -5,8 +5,18 @@
   "outputDirectory": "dist",
   "routes": [
     {
-      "src": "/api/music/(.*)",
-      "dest": "/api/music/$1"
+      "src": "^/privacy/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/privacy-policy"
+      }
+    },
+    {
+      "src": "^/terms/?$",
+      "status": 301,
+      "headers": {
+        "Location": "/terms-and-conditions"
+      }
     },
     {
       "src": "/assets/(.*)",
@@ -15,10 +25,27 @@
       }
     },
     {
+      "src": "/(sitemap\\.xml|robots\\.txt)",
+      "headers": {
+        "cache-control": "public, max-age=86400, stale-while-revalidate=86400"
+      }
+    },
+    {
+      "src": "/api/music/(.*)",
+      "dest": "/api/music/$1"
+    },
+    {
       "handle": "filesystem"
     },
     {
       "src": "/(.*)",
+      "headers": {
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+        "X-DNS-Prefetch-Control": "on"
+      },
       "dest": "/index.html"
     }
   ]

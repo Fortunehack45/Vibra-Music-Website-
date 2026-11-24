@@ -105,7 +105,10 @@ const AlbumReleaseSlide: React.FC<AlbumShelfProps> = ({
                       <img
                         src={album.artwork}
                         alt={`${album.title} by ${album.artist}`}
+                        width={228}
+                        height={228}
                         loading="lazy"
+                        decoding="async"
                         referrerPolicy="no-referrer"
                         className="h-full w-full object-cover"
                       />
@@ -400,7 +403,10 @@ export const VibraDiscoveryShelves: React.FC = () => {
                                 <img
                                   src={track.artwork}
                                   alt={`${track.title} by ${track.artist}`}
+                                  width={48}
+                                  height={48}
                                   loading="lazy"
+                                  decoding="async"
                                   referrerPolicy="no-referrer"
                                   className="h-full w-full object-cover"
                                 />

@@ -66,6 +66,44 @@ function renderLegalHtml(docType: LegalDocType, canonicalUrl: string): string {
     )
     .join('');
 
+  const jsonLd = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebPage',
+        '@id': `${canonicalUrl}#webpage`,
+        url: canonicalUrl,
+        name: seo.title,
+        description: seo.description,
+        isPartOf: {
+          '@id': 'https://vibramusic.store/#website',
+        },
+        inLanguage: 'en-US',
+        breadcrumb: {
+          '@id': `${canonicalUrl}#breadcrumb`,
+        },
+      },
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${canonicalUrl}#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: 'https://vibramusic.store/',
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: doc.title,
+            item: canonicalUrl,
+          },
+        ],
+      },
+    ],
+  });
+
   return `<!doctype html>
 <html lang="en" class="dark" style="background-color: #080707; color: #f2f1ef;">
   <head>
@@ -75,7 +113,7 @@ function renderLegalHtml(docType: LegalDocType, canonicalUrl: string): string {
     <meta name="description" content="${escapeHtml(seo.description)}" />
     <link rel="canonical" href="${escapeHtml(canonicalUrl)}" />
     <meta name="theme-color" content="#080707" />
-    <meta name="robots" content="index, follow" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
@@ -91,7 +129,16 @@ function renderLegalHtml(docType: LegalDocType, canonicalUrl: string): string {
     <meta property="og:image:width" content="1024" />
     <meta property="og:image:height" content="615" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@OnNerd_eth" />
+    <meta name="twitter:creator" content="@OnNerd_eth" />
+    <meta name="twitter:title" content="${escapeHtml(seo.title)}" />
+    <meta name="twitter:description" content="${escapeHtml(seo.description)}" />
     <meta name="twitter:image" content="https://vibramusic.store/assets/images/og_preview.png" />
+
+    <!-- Structured Data (Schema.org JSON-LD) -->
+    <script type="application/ld+json">
+      ${jsonLd}
+    </script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -126,7 +173,7 @@ function renderLegalHtml(docType: LegalDocType, canonicalUrl: string): string {
             <line x1="19" y1="12" x2="5" y2="12"></line>
             <polyline points="12 19 5 12 12 5"></polyline>
           </svg>
-          <img src="/assets/aistudio/Untitled_design_20261105_093330_0000_52b7f0b6.png" alt="" style="width: 14px; height: 14px; opacity: 0.85;" />
+          <img src="/assets/aistudio/Untitled_design_20261105_093330_0000_52b7f0b6.png" alt="Vibra Music logo" width="14" height="14" style="width: 14px; height: 14px; opacity: 0.85;" />
           <span>Vibra Music</span>
         </a>
         <a href="/" style="font-size: 12px; color: #8c8986; text-decoration: none;">Official Home</a>
@@ -220,11 +267,11 @@ const targets: { docType: LegalDocType; routes: string[] }[] = [
 ];
 
 for (const target of targets) {
+  const canonicalUrl = `https://vibramusic.store${getPathForLegalDoc(target.docType)}`;
   for (const route of target.routes) {
     const dir = path.resolve(publicDir, route);
     fs.mkdirSync(dir, { recursive: true });
     const filePath = path.resolve(dir, 'index.html');
-    const canonicalUrl = `https://vibramusic.store/${route}`;
     const html = renderLegalHtml(target.docType, canonicalUrl);
     fs.writeFileSync(filePath, html, 'utf-8');
     console.log(`Generated: ${filePath}`);

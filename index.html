@@ -3,33 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vibra Music — Official Aesthetic Music Player for Android</title>
+    <title>Vibra Music – Modern Android Music Player | Official Website</title>
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <meta
       name="description"
-      content="Download Vibra Music, the free open-source music player and YouTube Music client with Hi-Res FLAC audio, on-device DSP Mix, word-synced lyrics, and frosted-glass UI."
+      content="Discover Vibra Music, a modern Android music player featuring offline playback, synchronized lyrics, high-quality audio, customizable playback and more."
     />
     <meta
       name="keywords"
-      content="Vibra Music, Android music player, YouTube Music client, open source music app, Hi-Res FLAC player, DSP Mix crossfade, word-synced lyrics, Material 3 music player, GPLv3"
+      content="Vibra Music, Vibra Music official website, Vibra Music APK, Vibra Music Android, Android music player, Free music player for Android, Open-source Android music player, Offline music player, YouTube Music client for Android, Hi-Res audio player, Material 3 music player, GPLv3"
     />
-    <meta name="author" content="Fortune Adebayo & Vibra Music Contributors" />
-    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Fortune Adebayo &amp; Vibra Music Contributors" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="theme-color" content="#080707" />
     <link rel="canonical" href="https://vibramusic.store/" />
+
+    <!-- Performance: Preload Critical Hero LCP Poster -->
+    <link rel="preload" as="image" href="/assets/images/hero_phone_poster.jpg" fetchpriority="high" />
 
     <!-- OpenGraph Social Preview Card -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Vibra Music" />
     <meta property="og:url" content="https://vibramusic.store/" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:title" content="Vibra Music — Official Aesthetic Music Player for Android" />
+    <meta property="og:title" content="Vibra Music – Modern Android Music Player | Official Website" />
     <meta
       property="og:description"
-      content="Skip the flat players. Step into frosted glass, Hi-Res lossless FLAC audio, on-device DSP Mix transitions, word-synced lyrics, and Listen Together."
+      content="Discover Vibra Music, a modern Android music player featuring offline playback, synchronized lyrics, high-quality audio, customizable playback and more."
     />
     <meta
       property="og:image"
@@ -45,11 +48,12 @@
 
     <!-- Twitter / X Social Card -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@OnNerd_eth" />
     <meta name="twitter:creator" content="@OnNerd_eth" />
-    <meta name="twitter:title" content="Vibra Music — Official Aesthetic Music Player for Android" />
+    <meta name="twitter:title" content="Vibra Music – Modern Android Music Player | Official Website" />
     <meta
       name="twitter:description"
-      content="Free, open-source Material 3 music player & YouTube Music client with Hi-Res lossless audio, DSP Mix transitions, and word-synced lyrics."
+      content="Discover Vibra Music, a modern Android music player featuring offline playback, synchronized lyrics, high-quality audio, customizable playback and more."
     />
     <meta
       name="twitter:image"
@@ -60,19 +64,43 @@
       content="Vibra Music official preview banner — crisp white starburst emblem on vibrant purple"
     />
 
-    <!-- Structured Data (Schema.org JSON-LD) -->
+    <!-- Structured Data (Schema.org JSON-LD Unified Graph) -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@graph": [
           {
             "@type": "WebSite",
+            "@id": "https://vibramusic.store/#website",
+            "url": "https://vibramusic.store/",
+            "name": "Vibra Music",
+            "description": "Discover Vibra Music, a modern Android music player featuring offline playback, synchronized lyrics, high-quality audio, customizable playback and more.",
+            "inLanguage": "en-US",
+            "publisher": {
+              "@id": "https://vibramusic.store/#organization"
+            }
+          },
+          {
+            "@type": "Organization",
+            "@id": "https://vibramusic.store/#organization",
             "name": "Vibra Music",
             "url": "https://vibramusic.store/",
-            "description": "Official website for Vibra Music, an open-source aesthetic Android music player and YouTube Music client."
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://vibramusic.store/assets/aistudio/Untitled_design_20261105_093330_0000_52b7f0b6.png",
+              "width": 1024,
+              "height": 1024
+            },
+            "sameAs": [
+              "https://github.com/Fortunehack45/Vibra_Music",
+              "https://github.com/Fortunehack45/Vibra_Music_Releases",
+              "https://t.me/vibramusictg",
+              "https://x.com/OnNerd_eth"
+            ]
           },
           {
             "@type": "SoftwareApplication",
+            "@id": "https://vibramusic.store/#application",
             "name": "Vibra Music",
             "alternateName": "com.fortune.vibramusic",
             "applicationCategory": "MultimediaApplication",
@@ -81,23 +109,58 @@
             "license": "https://www.gnu.org/licenses/gpl-3.0.en.html",
             "downloadUrl": "https://github.com/Fortunehack45/Vibra_Music_Releases/releases/tag/v1.8.186",
             "image": "https://vibramusic.store/assets/aistudio/Untitled_design_20261105_093330_0000_52b7f0b6.png",
-            "description": "Open-source aesthetic music player and YouTube Music client featuring Hi-Res lossless FLAC/ALAC playback, on-device neural DSP Mix transitions, word-synced lyrics, animated album canvas, Discord Rich Presence, Last.fm & ListenBrainz scrobbling, Android Auto, Wear OS, and Google Cast.",
+            "description": "Free, open-source Android music player and YouTube Music client with offline playback, synchronized lyrics, Hi-Res lossless audio, on-device DSP Mix, and frosted-glass Material 3 UI.",
             "featureList": [
               "Hi-Res Lossless FLAC/ALAC audio playback",
               "On-device neural DSP Mix with beat-matching and Camelot harmonic transitions",
               "Apple-style word-synced lyrics with translation",
-              "Frosted-glass Material 3 UI with artwork-driven theming",
+              "Offline playback and local audio library sync",
+              "Frosted-glass Material 3 UI with artwork-driven dynamic theming",
               "Listen Together real-time synchronized rooms",
-              "Discord Rich Presence, Last.fm, ListenBrainz, Spotify Canvas, Android Auto, Wear OS, Google Cast, Google Drive backup & WebDAV"
+              "Discord Rich Presence, Last.fm, ListenBrainz, and WebDAV support"
             ],
             "offers": {
               "@type": "Offer",
               "price": "0",
-              "priceCurrency": "USD"
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock"
             }
           },
           {
+            "@type": "WebPage",
+            "@id": "https://vibramusic.store/#webpage",
+            "url": "https://vibramusic.store/",
+            "name": "Vibra Music – Modern Android Music Player | Official Website",
+            "description": "Discover Vibra Music, a modern Android music player featuring offline playback, synchronized lyrics, high-quality audio, customizable playback and more.",
+            "isPartOf": {
+              "@id": "https://vibramusic.store/#website"
+            },
+            "about": {
+              "@id": "https://vibramusic.store/#application"
+            },
+            "inLanguage": "en-US",
+            "primaryImageOfPage": {
+              "@type": "ImageObject",
+              "url": "https://vibramusic.store/assets/images/og_preview.png",
+              "width": 1024,
+              "height": 615
+            }
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://vibramusic.store/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://vibramusic.store/"
+              }
+            ]
+          },
+          {
             "@type": "FAQPage",
+            "@id": "https://vibramusic.store/#faq",
             "mainEntity": [
               {
                 "@type": "Question",
@@ -137,6 +200,7 @@
       }
     </script>
 
+    <!-- Google Fonts Preconnect -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -145,24 +209,70 @@
     />
   </head>
   <body class="bg-[#080707] text-[#f2f1ef] antialiased selection:bg-[#a855f7]/30 selection:text-white">
+    <!-- Non-JavaScript Crawlable Content for Search Engines & Accessibility -->
     <noscript>
-      <div style="max-width:800px;margin:40px auto;padding:20px;font-family:sans-serif;line-height:1.6;color:#e2e8f0;background:#080707;">
-        <h1>Vibra Music — Official Legal Disclosures &amp; Privacy Policy</h1>
-        <p><strong>Application Identifier:</strong> com.fortune.vibramusic | <strong>Website:</strong> https://vibramusic.store/ | <strong>Maintainer:</strong> Fortunehack45 (fortuneema7@gmail.com)</p>
-        
-        <h2>01. Privacy Policy &amp; Google API Services Limited Use Compliance</h2>
-        <p>Vibra Music's use and transfer to any other app of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" style="color:#c084fc;">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
-        <p>Vibra Music is built as a local-first, free open-source Android music client licensed under GNU GPLv3. We operate no centralized user database, deploy no advertising or tracking SDKs, and perform audio playback and DSP mix analysis strictly on your device.</p>
-        <p>When you choose to sign in with your Google or YouTube account, credentials and API tokens are stored in hardware-wrapped Android Keystore EncryptedSharedPreferences on your local device. We access your account strictly to retrieve your playlists, liked tracks, and listening suggestions. We do NOT transfer, sell, disclose, or broker your Google user data to any third party, data broker, advertising network, or analytics vendor. Google user data is NEVER used for serving advertisements or promotional profiling.</p>
-        
-        <h2>02. Data Retention &amp; Deletion</h2>
-        <p>You may disconnect your Google account or delete all local cache, search history, and stored preferences at any time in the app via Settings &rarr; Clear Cache or by uninstalling the application. You may also revoke access at any time via Google Account Permissions (https://myaccount.google.com/permissions).</p>
-        
-        <h2>03. Terms &amp; Conditions</h2>
-        <p>Vibra Music is free, open-source software licensed under GNU General Public License v3.0 (GPLv3). Vibra Music is an independent software client and does not host, store, or redistribute copyrighted music files or audio streams.</p>
-        
-        <h2>04. Contact Information</h2>
-        <p>Questions or inquiries may be directed to fortuneema7@gmail.com or via GitHub at https://github.com/Fortunehack45/Vibra_Music.</p>
+      <div style="max-width:960px;margin:40px auto;padding:24px;font-family:sans-serif;line-height:1.65;color:#e2e8f0;background:#080707;">
+        <header>
+          <h1 style="font-size:32px;font-weight:700;margin-bottom:8px;color:#fff;">Vibra Music — Modern Android Music Player &amp; YouTube Music Client</h1>
+          <p style="font-size:16px;color:#cbd5e1;">Official website for Vibra Music (package identifier: <code>com.fortune.vibramusic</code>), the free open-source Android music player featuring offline playback, synchronized lyrics, Hi-Res FLAC audio, and frosted-glass Material 3 UI.</p>
+          <nav aria-label="Official site navigation" style="margin:20px 0;padding:12px 0;border-top:1px solid #334155;border-bottom:1px solid #334155;">
+            <a href="#features" style="color:#c084fc;margin-right:16px;">Core Features</a>
+            <a href="#downloads" style="color:#c084fc;margin-right:16px;">Download APK (v1.8.186)</a>
+            <a href="#faq" style="color:#c084fc;margin-right:16px;">Frequently Asked Questions</a>
+            <a href="/privacy-policy" style="color:#c084fc;margin-right:16px;">Privacy Policy</a>
+            <a href="/terms-and-conditions" style="color:#c084fc;margin-right:16px;">Terms &amp; Conditions</a>
+            <a href="/security" style="color:#c084fc;margin-right:16px;">Security Policy</a>
+            <a href="/license" style="color:#c084fc;">GNU GPLv3 License</a>
+          </nav>
+        </header>
+
+        <main>
+          <section id="features" style="margin-bottom:36px;">
+            <h2 style="font-size:24px;color:#f8fafc;border-bottom:1px solid #1e293b;padding-bottom:8px;">Core Features &amp; Architecture</h2>
+            <ul style="padding-left:20px;">
+              <li><strong>Hi-Res Lossless Audio &amp; Offline Playback:</strong> Native FLAC and ALAC stream decoding, offline caching, and local storage playback without compression artifacts.</li>
+              <li><strong>On-Device Neural DSP Mix:</strong> Beat-matching and Camelot harmonic key detection powered by on-device ONNX models (beat_this_int8.onnx and vocals_umxhq_int8.onnx) for professional DJ-style crossfade transitions.</li>
+              <li><strong>Syllable-Level Word-Synced Lyrics:</strong> Apple-style kinetic highlighting with multi-provider fallback across Musixmatch, LRCLIB, KuGou, and instant multilingual translation.</li>
+              <li><strong>Frosted-Glass Material 3 Design:</strong> Immersive UI with real-time artwork color extraction, dynamic blurred dock, and fluid transitions.</li>
+              <li><strong>Listen Together Real-Time Sessions:</strong> Synchronize playback across multiple devices with room invite codes via our lightweight Go WebSocket relay.</li>
+              <li><strong>Open Ecosystem Integrations:</strong> Discord Rich Presence, Last.fm and ListenBrainz scrobbling, Android Auto, Wear OS, Google Cast, and private Google Drive backup.</li>
+            </ul>
+          </section>
+
+          <section id="downloads" style="margin-bottom:36px;">
+            <h2 style="font-size:24px;color:#f8fafc;border-bottom:1px solid #1e293b;padding-bottom:8px;">Official Release Downloads (v1.8.186)</h2>
+            <p>Vibra Music is free, open-source software distributed under GNU GPLv3. Signed APK binaries are compiled directly from source and verified with SHA-256 cryptographic hashes:</p>
+            <ul style="padding-left:20px;">
+              <li><a href="https://github.com/Fortunehack45/Vibra_Music_Releases/releases/download/v1.8.186/VibraMusic-v1.8.186-arm64-v8a.apk" style="color:#c084fc;">Download arm64-v8a APK (60.4 MB)</a> — Recommended for modern 64-bit Android smartphones.</li>
+              <li><a href="https://github.com/Fortunehack45/Vibra_Music_Releases/releases/download/v1.8.186/VibraMusic-v1.8.186-Universal-AllDevices.apk" style="color:#c084fc;">Download Universal APK (151.1 MB)</a> — Includes all CPU architectures.</li>
+              <li><a href="https://github.com/Fortunehack45/Vibra_Music_Releases/releases/download/v1.8.186/VibraMusic-v1.8.186-armeabi-v7a.apk" style="color:#c084fc;">Download armeabi-v7a APK (51.7 MB)</a> — For legacy 32-bit Android handsets.</li>
+              <li><a href="https://github.com/Fortunehack45/Vibra_Music_Releases/releases/download/v1.8.186/VibraMusic-v1.8.186-x86_64.apk" style="color:#c084fc;">Download x86_64 APK (66.1 MB)</a> — For Intel/AMD Android tablets and emulators.</li>
+              <li><a href="https://github.com/Fortunehack45/Vibra_Music_Releases/releases/download/v1.8.186/checksums.txt" style="color:#c084fc;">View SHA-256 Checksums (checksums.txt)</a></li>
+            </ul>
+          </section>
+
+          <section id="faq" style="margin-bottom:36px;">
+            <h2 style="font-size:24px;color:#f8fafc;border-bottom:1px solid #1e293b;padding-bottom:8px;">Frequently Asked Questions</h2>
+            <h3>Is Vibra Music completely free and open source?</h3>
+            <p>Yes. Vibra Music is free, open-source software licensed under GNU General Public License v3.0 (GPLv3) with zero advertisements, zero subscriptions, and complete source code publicly accessible on GitHub.</p>
+            <h3>Do I need a Google or YouTube Music account to use Vibra Music?</h3>
+            <p>No. You can search, browse, and play audio anonymously immediately upon installation. Signing in with a Google account is strictly optional to synchronize personal playlists.</p>
+            <h3>How does Hi-Res lossless audio and DSP Mix work?</h3>
+            <p>Vibra Music supports pluggable QuickJS module sources for Hi-Res FLAC/ALAC playback with YouTube Music fallback, and runs on-device ONNX Runtime neural models for beat-matched, Camelot harmonic crossfade transitions.</p>
+            <h3>How do I verify that my downloaded APK is authentic?</h3>
+            <p>Every official signed APK is published exclusively on the Fortunehack45/Vibra_Music_Releases repository with a corresponding checksums.txt file containing SHA-256 verification hashes.</p>
+          </section>
+
+          <section id="legal" style="margin-bottom:36px;">
+            <h2 style="font-size:24px;color:#f8fafc;border-bottom:1px solid #1e293b;padding-bottom:8px;">Legal Disclosures &amp; Google API Services Limited Use Compliance</h2>
+            <p>Vibra Music's use and transfer to any other app of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy" style="color:#c084fc;">Google API Services User Data Policy</a>, including the Limited Use requirements.</p>
+            <p>Vibra Music operates on a local-first architecture. We maintain no centralized user database, deploy no advertising or tracking SDKs, and perform audio playback and DSP mix analysis strictly on your device. OAuth tokens are stored exclusively inside hardware-wrapped Android Keystore EncryptedSharedPreferences. Google user data is NEVER sold, transferred, brokered, or used for advertising. You may revoke access at any time via <a href="https://myaccount.google.com/permissions" style="color:#c084fc;">Google Account Permissions</a>.</p>
+          </section>
+        </main>
+
+        <footer style="margin-top:40px;padding-top:20px;border-top:1px solid #334155;font-size:13px;color:#94a3b8;">
+          <p>Vibra Music &copy; <span id="noscript-year">2026</span> &middot; Maintained by Fortune Adebayo &middot; <a href="https://github.com/Fortunehack45/Vibra_Music" style="color:#c084fc;">GitHub Repository</a> &middot; Not affiliated with Google LLC, YouTube Music, Spotify, Discord, or Musixmatch.</p>
+        </footer>
       </div>
     </noscript>
     <div id="root"></div>

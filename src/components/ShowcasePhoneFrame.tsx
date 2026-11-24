@@ -34,6 +34,10 @@ export const ShowcasePhoneFrame: React.FC<ShowcasePhoneFrameProps> = ({
         <img
           src={imageSrc}
           alt={alt}
+          width={540}
+          height={1200}
+          loading="lazy"
+          decoding="async"
           referrerPolicy="no-referrer"
           className="h-full w-full object-cover object-top"
         />

@@ -19,6 +19,10 @@ export const LiveDuoWidget: React.FC = () => {
             <img
               src={LIVE_HOSTS[0].avatar}
               alt="Vibra listener profile"
+              width={40}
+              height={40}
+              loading="lazy"
+              decoding="async"
               referrerPolicy="no-referrer"
               className="h-full w-full object-cover"
             />
@@ -27,6 +31,10 @@ export const LiveDuoWidget: React.FC = () => {
             <img
               src={LIVE_HOSTS[1].avatar}
               alt="Vibra community listener"
+              width={40}
+              height={40}
+              loading="lazy"
+              decoding="async"
               referrerPolicy="no-referrer"
               className="h-full w-full object-cover"
             />

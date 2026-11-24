@@ -30,6 +30,10 @@ export const DownloadSection: React.FC<DownloadSectionProps> = ({
             <img
               src={appIconSrc}
               alt="Vibra Music Android icon"
+              width={44}
+              height={44}
+              loading="lazy"
+              decoding="async"
               className="h-11 w-11 rounded-[12px] object-cover ring-1 ring-white/15"
             />
             <div>

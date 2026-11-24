@@ -92,6 +92,10 @@ export const ArtistOfTheDayPhone: React.FC<ArtistOfTheDayPhoneProps> = ({
               <img
                 src={artist.spotlightImage}
                 alt={artist.name}
+                width={260}
+                height={245}
+                loading="lazy"
+                decoding="async"
                 referrerPolicy="no-referrer"
                 className="h-full w-full object-cover transition-transform duration-300"
               />

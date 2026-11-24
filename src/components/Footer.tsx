@@ -40,7 +40,15 @@ export const Footer: React.FC<FooterProps> = ({ logoSrc, onOpenLegal, onGoHome }
               onClick={handleHomeClick}
               className="inline-flex items-center gap-2.5 text-[14px] font-medium tracking-wide text-[#f2f1ef] transition-colors hover:text-white"
             >
-              <img src={logoSrc} alt="Vibra Music logo" className="h-4.5 w-4.5 opacity-90" />
+              <img
+                src={logoSrc}
+                alt="Vibra Music logo"
+                width={18}
+                height={18}
+                loading="lazy"
+                decoding="async"
+                className="h-4.5 w-4.5 opacity-90"
+              />
               <span>Vibra Music</span>
             </a>
             <p className="mt-3.5 max-w-[330px] text-[13px] leading-[1.6] text-[#8a8784]">
