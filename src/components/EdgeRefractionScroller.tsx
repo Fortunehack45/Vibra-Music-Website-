@@ -4,9 +4,6 @@ export interface EdgeRefractionScrollerProps {
   children: React.ReactNode;
   className?: string;
   scrollerRef?: React.RefObject<HTMLDivElement | null>;
-  edgeWidthClassName?: string;
-  overlayHeightClassName?: string;
-  refractionStrength?: 'standard' | 'gentle';
   autoScroll?: boolean;
   marqueeAnimationClass?: string;
   isPaused?: boolean;
