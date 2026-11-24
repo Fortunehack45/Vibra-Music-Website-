@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight, ChevronLeft, ChevronRight, Pause, Volume2 } from 'lucide-react';
+import { ArrowUpRight, Pause, Volume2 } from 'lucide-react';
 import type {
   LiveMusicAlbum,
   LiveMusicDiscoverPayload,
@@ -35,11 +35,8 @@ interface AlbumShelfProps {
 const AlbumReleaseSlide: React.FC<AlbumShelfProps> = ({ title, albums, loading }) => {
   const scrollerRef = useRef<HTMLDivElement>(null);
 
-  const scrollShelf = (direction: -1 | 1) => {
-    if (!scrollerRef.current) return;
-    const distance = Math.max(240, Math.floor(scrollerRef.current.clientWidth * 0.72));
-    scrollerRef.current.scrollBy({ left: direction * distance, behavior: 'smooth' });
-  };
+  // Duplicated albums for seamless infinite loop
+  const infiniteAlbums = albums.length > 0 ? [...albums, ...albums] : [];
 
   return (
     <div className="mt-10 sm:mt-12">
@@ -47,31 +44,16 @@ const AlbumReleaseSlide: React.FC<AlbumShelfProps> = ({ title, albums, loading }
         <h3 className="font-display text-[17px] font-semibold tracking-[-0.015em] text-[#f4f3f1] sm:text-[19px]">
           {title}
         </h3>
-        <div className="hidden items-center gap-1.5 sm:flex">
-          <button
-            type="button"
-            onClick={() => scrollShelf(-1)}
-            aria-label={`Scroll ${title} left`}
-            className="flex h-8 w-8 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-[#a6a3a0] transition-colors hover:border-white/20 hover:text-white"
-          >
-            <ChevronLeft className="h-4 w-4" />
-          </button>
-          <button
-            type="button"
-            onClick={() => scrollShelf(1)}
-            aria-label={`Scroll ${title} right`}
-            className="flex h-8 w-8 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-[#a6a3a0] transition-colors hover:border-white/20 hover:text-white"
-          >
-            <ChevronRight className="h-4 w-4" />
-          </button>
-        </div>
       </div>
 
       {/* Horizontal Album Slide with Vibra Music Optical Liquid-Glass Edge Refraction */}
       <div className="-mx-5 mt-4 sm:mx-0">
         <EdgeRefractionScroller
           scrollerRef={scrollerRef}
-          className="flex snap-x snap-mandatory gap-4 px-5 pb-2 sm:gap-5 sm:px-0"
+          autoScroll={!loading && infiniteAlbums.length > 0}
+          autoScrollSpeed={0.5}
+          overlayHeightClassName="top-0 bottom-auto h-[166px] sm:h-[208px] lg:h-[228px]"
+          className="flex gap-4 px-5 pb-2 sm:gap-5 sm:px-0"
         >
           {loading
             ? Array.from({ length: 6 }).map((_, idx) => (
@@ -84,13 +66,13 @@ const AlbumReleaseSlide: React.FC<AlbumShelfProps> = ({ title, albums, loading }
                   <div className="mt-1.5 h-3 w-1/2 rounded bg-white/[0.04]" />
                 </div>
               ))
-            : albums.map((album) => (
+            : infiniteAlbums.map((album, idx) => (
                 <a
-                  key={album.id}
+                  key={`${album.id}-${idx}`}
                   href={album.externalUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group w-[166px] shrink-0 snap-start text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a855f7] sm:w-[208px] lg:w-[228px]"
+                  className="group w-[166px] shrink-0 text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a855f7] sm:w-[208px] lg:w-[228px]"
                 >
                   <div className="relative aspect-square w-full overflow-hidden rounded-[10px] border border-white/[0.09] bg-[#141313] transition-transform duration-300 group-hover:scale-[1.015]">
                     <img
@@ -182,12 +164,8 @@ export const VibraDiscoveryShelves: React.FC = () => {
     }
   };
 
-  const scrollSongs = (direction: -1 | 1) => {
-    if (!songsScrollerRef.current) return;
-    songsScrollerRef.current.scrollBy({ left: direction * 340, behavior: 'smooth' });
-  };
-
   const trackColumns = chunkIntoColumns(feed?.bestNewSongs ?? [], TRACKS_PER_COLUMN);
+  const infiniteColumns = trackColumns.length > 0 ? [...trackColumns, ...trackColumns] : [];
 
   return (
     <section
@@ -266,30 +244,16 @@ export const VibraDiscoveryShelves: React.FC = () => {
               <h3 className="font-display text-[17px] font-semibold tracking-[-0.015em] text-[#f4f3f1] sm:text-[19px]">
                 Best New Songs
               </h3>
-              <div className="hidden items-center gap-1.5 sm:flex">
-                <button
-                  type="button"
-                  onClick={() => scrollSongs(-1)}
-                  aria-label="Scroll Best New Songs left"
-                  className="flex h-8 w-8 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-[#a6a3a0] transition-colors hover:border-white/20 hover:text-white"
-                >
-                  <ChevronLeft className="h-4 w-4" />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => scrollSongs(1)}
-                  aria-label="Scroll Best New Songs right"
-                  className="flex h-8 w-8 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-[#a6a3a0] transition-colors hover:border-white/20 hover:text-white"
-                >
-                  <ChevronRight className="h-4 w-4" />
-                </button>
-              </div>
             </div>
 
             <div className="-mx-5 mt-4 sm:mx-0">
               <EdgeRefractionScroller
                 scrollerRef={songsScrollerRef}
-                className="flex snap-x snap-mandatory gap-6 px-5 pb-2 sm:gap-8 sm:px-0"
+                autoScroll={!loading && infiniteColumns.length > 0}
+                autoScrollSpeed={0.5}
+                isPaused={isAudioPlaying}
+                overlayHeightClassName="inset-y-0"
+                className="flex gap-6 px-5 pb-2 sm:gap-8 sm:px-0"
               >
                 {loading
                   ? Array.from({ length: 4 }).map((_, colIdx) => (
@@ -313,17 +277,17 @@ export const VibraDiscoveryShelves: React.FC = () => {
                         ))}
                       </div>
                     ))
-                  : trackColumns.map((column, colIdx) => (
+                  : infiniteColumns.map((column, colIdx) => (
                       <div
                         key={colIdx}
-                        className="flex w-[280px] shrink-0 snap-start flex-col sm:w-[308px]"
+                        className="flex w-[280px] shrink-0 flex-col sm:w-[308px]"
                       >
                         {column.map((track, rowIdx) => {
                           const isActive = playingTrack?.id === track.id;
                           const isLast = rowIdx === column.length - 1;
                           return (
                             <button
-                              key={track.id}
+                              key={`${track.id}-${colIdx}-${rowIdx}`}
                               type="button"
                               onClick={() => handleToggleTrack(track)}
                               className={`group flex w-full items-center gap-3.5 py-2.5 text-left transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#a855f7] ${

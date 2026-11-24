@@ -1,5 +1,4 @@
 import React, { useRef } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { EdgeRefractionScroller } from './EdgeRefractionScroller';
 import { FourDotBadge } from './FourDotBadge';
 import { ShowcasePhoneFrame } from './ShowcasePhoneFrame';
@@ -86,11 +85,8 @@ interface AppScreensShowcaseProps {
 export const AppScreensShowcase: React.FC<AppScreensShowcaseProps> = ({ onInspectScreen }) => {
   const galleryRef = useRef<HTMLDivElement>(null);
 
-  const scrollGallery = (direction: -1 | 1) => {
-    if (!galleryRef.current) return;
-    const distance = Math.max(280, Math.floor(galleryRef.current.clientWidth * 0.65));
-    galleryRef.current.scrollBy({ left: direction * distance, behavior: 'smooth' });
-  };
+  // Duplicated screens array for continuous, seamless infinite loop
+  const infiniteScreens = [...EXTENDED_SCREENS, ...EXTENDED_SCREENS];
 
   return (
     <div id="screens">
@@ -144,7 +140,7 @@ export const AppScreensShowcase: React.FC<AppScreensShowcaseProps> = ({ onInspec
         </div>
       </section>
 
-      {/* EXTENDED MULTI-SCREEN GALLERY — LYRICS, QUEUE, ALBUM, EXPLORE (WITH EDGE REFRACTION) */}
+      {/* EXTENDED MULTI-SCREEN GALLERY — INFINITE LOOP SLIDE WITH VIBRA OPTICAL EDGE REFRACTION */}
       <section
         aria-labelledby="more-screens-heading"
         className="relative mx-auto max-w-[1280px] border-t border-white/[0.06] px-5 py-16 sm:px-10 sm:py-22 lg:px-14"
@@ -159,44 +155,28 @@ export const AppScreensShowcase: React.FC<AppScreensShowcaseProps> = ({ onInspec
               Every surface, tuned to the track.
             </h2>
           </div>
-
-          <div className="hidden items-center gap-1.5 sm:flex">
-            <button
-              type="button"
-              onClick={() => scrollGallery(-1)}
-              aria-label="Scroll app screens left"
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-[#a6a3a0] transition-colors hover:border-white/20 hover:text-white"
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </button>
-            <button
-              type="button"
-              onClick={() => scrollGallery(1)}
-              aria-label="Scroll app screens right"
-              className="flex h-8 w-8 items-center justify-center rounded-full border border-white/[0.08] bg-white/[0.03] text-[#a6a3a0] transition-colors hover:border-white/20 hover:text-white"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </button>
-          </div>
         </div>
 
         <div className="-mx-5 mt-10 sm:mx-0">
           <EdgeRefractionScroller
             scrollerRef={galleryRef}
-            refractionStrength="gentle"
-            edgeWidthClassName="w-12 sm:w-20"
-            className="flex snap-x snap-mandatory gap-7 px-5 pb-4 sm:gap-9 sm:px-1"
+            refractionStrength="standard"
+            edgeWidthClassName="w-14 sm:w-24"
+            overlayHeightClassName="top-0 bottom-auto h-[440px] sm:h-[480px]"
+            autoScroll={true}
+            autoScrollSpeed={0.55}
+            className="flex gap-7 px-5 pb-4 sm:gap-9 sm:px-1"
           >
-            {EXTENDED_SCREENS.map((screen) => (
+            {infiniteScreens.map((screen, idx) => (
               <div
-                key={screen.id}
-                className="flex w-[256px] shrink-0 snap-start flex-col items-center sm:w-[276px]"
+                key={`${screen.id}-${idx}`}
+                className="flex w-[256px] shrink-0 flex-col items-center sm:w-[276px]"
               >
                 <ShowcasePhoneFrame
                   imageSrc={screen.src}
                   alt={screen.alt}
                   label={screen.label}
-                  testId={`vibra-screen-${screen.id}`}
+                  testId={`vibra-screen-${screen.id}-${idx}`}
                   onInspect={() =>
                     onInspectScreen({
                       src: screen.src,

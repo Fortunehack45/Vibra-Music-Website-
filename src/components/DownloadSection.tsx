@@ -1,6 +1,6 @@
 import React from 'react';
-import { ArrowDownToLine, ArrowUpRight } from 'lucide-react';
-import { VIBRA_LINKS, VIBRA_RELEASE } from '../data/legalContent';
+import { ArrowDownToLine, ArrowUpRight, Sparkles } from 'lucide-react';
+import { useLatestRelease } from '../utils/useLatestRelease';
 
 interface DownloadSectionProps {
   appIconSrc: string;
@@ -13,7 +13,9 @@ export const DownloadSection: React.FC<DownloadSectionProps> = ({
   onOpenSecurity,
   onOpenLicense,
 }) => {
-  const primaryBuild = VIBRA_RELEASE.builds[0];
+  const release = useLatestRelease();
+  const primaryBuild =
+    release.builds.find((b) => b.recommended) ?? release.builds[0];
 
   return (
     <section
@@ -31,9 +33,17 @@ export const DownloadSection: React.FC<DownloadSectionProps> = ({
               className="h-11 w-11 rounded-[12px] object-cover ring-1 ring-white/15"
             />
             <div>
-              <p className="text-[12px] text-[#8a8784]">Release {VIBRA_RELEASE.version}</p>
+              <div className="flex items-center gap-2">
+                <p className="text-[12px] text-[#8a8784]">Release {release.version}</p>
+                {release.isLiveUpdated && (
+                  <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium text-emerald-400 ring-1 ring-emerald-500/20">
+                    <Sparkles className="h-2.5 w-2.5" />
+                    Latest
+                  </span>
+                )}
+              </div>
               <p className="text-[12px] text-[#5e5c5a]">
-                {VIBRA_RELEASE.minAndroid} · {VIBRA_RELEASE.packageId}
+                {release.minAndroid} · {release.packageId}
               </p>
             </div>
           </div>
@@ -68,7 +78,7 @@ export const DownloadSection: React.FC<DownloadSectionProps> = ({
             </a>
 
             <a
-              href={VIBRA_LINKS.latestRelease}
+              href={release.latestReleaseUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex min-h-[44px] items-center gap-1 text-[13.5px] text-[#8a8784] transition-colors hover:text-white"
@@ -87,12 +97,12 @@ export const DownloadSection: React.FC<DownloadSectionProps> = ({
         {/* Right Column — Clean Architectural Release Builds Table */}
         <div className="lg:col-span-7">
           <div className="flex items-baseline justify-between border-b border-white/[0.08] pb-3 text-[12px] text-[#6f6d6b]">
-            <span>Signed Android Packages ({VIBRA_RELEASE.version})</span>
+            <span>Signed Android Packages ({release.version})</span>
             <span className="tabular-nums">Size</span>
           </div>
 
           <ul className="divide-y divide-white/[0.06] border-b border-white/[0.08]">
-            {VIBRA_RELEASE.builds.map((build) => (
+            {release.builds.map((build) => (
               <li key={build.id}>
                 <a
                   href={build.url}
@@ -128,7 +138,7 @@ export const DownloadSection: React.FC<DownloadSectionProps> = ({
           {/* Quiet Integrity & Licensing Footer Line */}
           <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-[12.5px] text-[#7c7977]">
             <a
-              href={VIBRA_LINKS.checksums}
+              href={release.checksumsUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-[#a8a5a2] transition-colors hover:text-white"
