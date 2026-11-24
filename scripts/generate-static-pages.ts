@@ -87,7 +87,11 @@ function renderLegalHtml(docType: LegalDocType, canonicalUrl: string): string {
     <meta property="og:title" content="${escapeHtml(seo.title)}" />
     <meta property="og:description" content="${escapeHtml(seo.description)}" />
     <meta property="og:url" content="${escapeHtml(canonicalUrl)}" />
-    <meta property="og:image" content="https://vibramusic.store/assets/aistudio/Untitled_design_20261105_093330_0000_52b7f0b6.png" />
+    <meta property="og:image" content="https://vibramusic.store/assets/images/og_preview.png" />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="615" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://vibramusic.store/assets/images/og_preview.png" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
