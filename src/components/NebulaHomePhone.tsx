@@ -45,11 +45,11 @@ export const NebulaHomePhone: React.FC<NebulaHomePhoneProps> = ({ highlightedFea
           <div
             className="absolute z-10 overflow-hidden bg-black"
             style={{
-              left: '23.0%',
-              top: '1.6%',
-              width: '53.4%',
-              height: '77.8%',
-              borderRadius: 'clamp(18px, 7.5%, 32px)',
+              left: '25.2%',
+              top: '7.9%',
+              width: '49.4%',
+              height: '67.4%',
+              borderRadius: 'clamp(20px, 9%, 36px)',
             }}
           >
             <video
