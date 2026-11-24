@@ -17,7 +17,7 @@ export const NebulaHomePhone: React.FC<NebulaHomePhoneProps> = ({ highlightedFea
   return (
     <div
       data-testid="nebula-home-screen"
-      className="relative mx-auto flex w-full max-w-[320px] items-center justify-center sm:max-w-[420px] lg:max-w-[500px] select-none"
+      className="relative mx-auto flex w-full max-w-[280px] xs:max-w-[320px] items-center justify-center sm:max-w-[420px] lg:max-w-[500px] select-none"
     >
       {/* Pure Atmospheric Purple Glow strictly behind the phone */}
       <div
@@ -29,27 +29,27 @@ export const NebulaHomePhone: React.FC<NebulaHomePhoneProps> = ({ highlightedFea
         }}
       />
 
-      {/* Outer Edgeless Fade Container: Hand fades in cleanly from pure dark void with zero visible boundary */}
+      {/* Outer Edgeless Fade Container: Phone screen & bezel stay 100% solid & crisp down to 80%, then hand wrist fades cleanly into background */}
       <div
         className="relative z-10 w-full"
         style={{
           WebkitMaskImage:
-            'linear-gradient(to bottom, #000 0%, #000 50%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.4) 68%, rgba(0,0,0,0.1) 74%, rgba(0,0,0,0) 80%)',
+            'linear-gradient(to bottom, #000 0%, #000 81%, rgba(0,0,0,0.85) 86%, rgba(0,0,0,0.45) 92%, rgba(0,0,0,0.12) 97%, transparent 100%)',
           maskImage:
-            'linear-gradient(to bottom, #000 0%, #000 50%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.4) 68%, rgba(0,0,0,0.1) 74%, rgba(0,0,0,0) 80%)',
+            'linear-gradient(to bottom, #000 0%, #000 81%, rgba(0,0,0,0.85) 86%, rgba(0,0,0,0.45) 92%, rgba(0,0,0,0.12) 97%, transparent 100%)',
         }}
       >
         {/* Frame Container keeping 682:1024 exact aspect ratio of the hand photo */}
         <div className="relative aspect-[682/1024] w-full">
-          {/* Layer 1: Phone Screen Video (underlies screen opening with 2px bleed behind natural phone bezel) */}
+          {/* Layer 1: Phone Screen Video (underlies screen opening with natural bezel overlap) */}
           <div
             className="absolute z-10 overflow-hidden bg-black"
             style={{
-              left: '23.15%',
-              top: '1.75%',
-              width: '53.25%',
-              height: '77.55%',
-              borderRadius: '40px',
+              left: '23.0%',
+              top: '1.6%',
+              width: '53.4%',
+              height: '77.8%',
+              borderRadius: '42px',
             }}
           >
             <video
