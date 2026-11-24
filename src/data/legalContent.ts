@@ -399,7 +399,7 @@ export const LEGAL_DOCUMENTS: Record<LegalDocType, LegalDocumentData> = {
         paragraphs: [
           'We reserve the right to update these Terms to reflect architectural changes, new integrations, or legal requirements. Continued use of the Software following publication of revised Terms constitutes your acceptance of the updated provisions.',
           'If any provision of these Terms is held unenforceable by a court of competent jurisdiction, that provision shall be enforced to the maximum extent permissible and the remaining provisions shall continue in full force and effect.',
-          'For official signed releases, source code disclosures, licensing inquiries, or legal notices, refer to github.com/Fortunehack45/Vibra_Music, github.com/Fortunehack45/Vibra_Music_Releases, or fortuneadebayo.space.',
+          'For official signed releases, source code disclosures, licensing inquiries, or legal notices, refer to github.com/Fortunehack45/Vibra_Music, github.com/Fortunehack45/Vibra_Music_Releases, or vibramusic.store.',
         ],
       },
     ],
