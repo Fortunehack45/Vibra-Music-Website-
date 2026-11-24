@@ -35,7 +35,7 @@ export const ShowcasePhoneFrame: React.FC<ShowcasePhoneFrameProps> = ({
           src={imageSrc}
           alt={alt}
           referrerPolicy="no-referrer"
-          className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.015]"
+          className="h-full w-full object-cover object-top"
         />
       </div>
     </button>

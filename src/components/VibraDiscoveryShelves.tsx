@@ -329,7 +329,7 @@ export const VibraDiscoveryShelves: React.FC = () => {
       </div>
 
       {error && !loading && (
-        <div className="mt-8 border-y border-white/[0.08] py-6 text-[13.5px] text-[#9c9996]">
+        <div className="mt-8 py-6 text-[13.5px] text-[#9c9996]">
           Live music feeds are temporarily unreachable ({error}). Refresh the page to retry.
         </div>
       )}

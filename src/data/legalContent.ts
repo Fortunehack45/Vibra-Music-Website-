@@ -45,7 +45,7 @@ export const VIBRA_LINKS = {
     'https://github.com/Fortunehack45/Vibra_Music_Releases/releases/download/v1.8.186/checksums.txt',
   securityAdvisories: 'https://github.com/Fortunehack45/Vibra_Music/security/advisories',
   telegram: 'https://t.me/vibramusictg',
-  website: 'https://fortuneadebayo.space/',
+  website: 'https://vibramusic.store',
   twitter: 'https://x.com/OnNerd_eth',
   mixDocs: 'https://github.com/Fortunehack45/Vibra_Music/blob/main/docs/MIX_ARCHITECTURE.md',
   contributing: 'https://github.com/Fortunehack45/Vibra_Music/blob/main/CONTRIBUTING.md',

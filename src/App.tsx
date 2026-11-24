@@ -189,8 +189,8 @@ export default function App() {
           <div className="relative z-30 grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-12 md:items-start">
             {/* Far Left Index Label */}
             <div className="md:col-span-2">
-              <p className="text-[12px] font-normal text-[#5a5856]">04/</p>
-              <p className="mt-1 text-[13px] font-normal text-[#d8d6d4]">UI Design</p>
+              <p className="text-[12px] font-normal text-[#5a5856]">v1.8 /</p>
+              <p className="mt-1 text-[13px] font-normal text-[#d8d6d4]">Sound &amp; Glass</p>
             </div>
 
             {/* Center-Left Primary Display Headline */}
@@ -293,10 +293,10 @@ export default function App() {
               id="statement-heading"
               className="font-display max-w-[540px] text-[30px] font-normal leading-[1.12] tracking-[-0.025em] sm:text-[44px] lg:text-[50px]"
             >
-              <span className="block text-[#f0efed]">Reimagines music</span>
-              <span className="block text-[#c8c6c4]">listening with lossless</span>
-              <span className="block text-[#807e7c]">audio, live lyrics &amp;</span>
-              <span className="block text-[#636160]">dynamic artwork.</span>
+              <span className="block text-[#f0efed]">Music should look</span>
+              <span className="block text-[#c8c6c4]">and sound as good</span>
+              <span className="block text-[#807e7c]">as it feels. Lossless,</span>
+              <span className="block text-[#636160]">synced, and open.</span>
             </h2>
           </div>
         </section>

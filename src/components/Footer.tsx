@@ -28,7 +28,7 @@ export const Footer: React.FC<FooterProps> = ({ logoSrc, onOpenLegal, onGoHome }
   };
 
   return (
-    <footer className="relative z-20 border-t border-white/[0.07] bg-[#080707]">
+    <footer className="relative z-20 bg-[#080707]">
       <div className="mx-auto max-w-[1280px] px-5 pt-14 pb-10 sm:px-10 lg:px-14 lg:pt-18 lg:pb-12">
         <div className="grid grid-cols-1 gap-10 sm:grid-cols-2 lg:grid-cols-12 lg:gap-8">
           {/* Brand Column */}
