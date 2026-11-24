@@ -26,6 +26,7 @@ export interface LiveMusicDiscoverPayload {
   recentReleases: LiveMusicAlbum[];
   fetchedAt: string;
   sources: string[];
+  country?: string;
 }
 
 interface YtmRun {

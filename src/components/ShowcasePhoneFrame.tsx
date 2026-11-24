@@ -21,7 +21,7 @@ export const ShowcasePhoneFrame: React.FC<ShowcasePhoneFrameProps> = ({
       onClick={onInspect}
       data-testid={testId}
       aria-label={`Inspect ${label} full screen`}
-      className="group relative w-[256px] max-w-[82vw] sm:w-[276px] shrink-0 rounded-[42px] sm:rounded-[44px] border border-[#2d2b2a] bg-[#0a0909] p-[8px] sm:p-[9px] text-left shadow-[0_28px_80px_rgba(0,0,0,0.9)] transition-transform duration-300 hover:-translate-y-1 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a855f7]"
+      className="group relative w-[256px] max-w-[82vw] sm:w-[276px] shrink-0 rounded-[42px] sm:rounded-[44px] border border-[#2d2b2a] bg-[#0a0909] p-[8px] sm:p-[9px] text-left shadow-[0_28px_80px_rgba(0,0,0,0.9)] transition-colors duration-300 hover:border-[#4f4c4a] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a855f7]"
     >
       {/* Subtle metallic titanium inner highlight */}
       <div

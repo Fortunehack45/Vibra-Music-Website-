@@ -32,7 +32,7 @@ export const FaqSection: React.FC = () => {
         </div>
 
         {/* Right Accordion List */}
-        <div className="divide-y divide-white/[0.07] border-y border-white/[0.07] lg:col-span-8">
+        <div className="divide-y divide-white/[0.07] lg:col-span-8">
           {VIBRA_FAQS.map((item) => {
             const isOpen = openId === item.id;
             const panelId = `faq-panel-${item.id}`;

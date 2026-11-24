@@ -11,45 +11,45 @@ const HERO_LYRICS_VIDEO_SRC = '/assets/videos/hero_lyrics_loop.mp4';
 
 export const NebulaHomePhone: React.FC<NebulaHomePhoneProps> = ({ highlightedFeature }) => {
   const reflectionGlow = highlightedFeature
-    ? 'opacity-[0.65] scale-105'
-    : 'opacity-[0.45] scale-100';
+    ? 'opacity-[0.70] scale-105'
+    : 'opacity-[0.48] scale-100';
 
   return (
     <div
       data-testid="nebula-home-screen"
       className="relative mx-auto flex w-full max-w-[320px] items-center justify-center sm:max-w-[420px] lg:max-w-[500px] select-none"
     >
-      {/* Vibra Atmospheric Glow & Orbital Halos strictly behind the phone */}
+      {/* Pure Atmospheric Purple Glow strictly behind the phone */}
       <div
         aria-hidden="true"
-        className={`pointer-events-none absolute -inset-10 z-0 rounded-full blur-[72px] transition-all duration-700 ${reflectionGlow}`}
+        className={`pointer-events-none absolute -inset-10 z-0 rounded-full blur-[76px] transition-all duration-700 ${reflectionGlow}`}
         style={{
           background:
-            'radial-gradient(ellipse 70% 65% at 50% 45%, rgba(168, 85, 247, 0.32) 0%, rgba(139, 92, 246, 0.18) 45%, rgba(109, 40, 217, 0.04) 75%, transparent 100%)',
+            'radial-gradient(ellipse 70% 65% at 50% 45%, rgba(168, 85, 247, 0.35) 0%, rgba(139, 92, 246, 0.18) 45%, rgba(109, 40, 217, 0.04) 75%, transparent 100%)',
         }}
       />
 
-      {/* Outer Edgeless Fade Container: Multi-direction feathered fade ensuring zero harsh borders */}
+      {/* Outer Edgeless Fade Container: Hand fades in cleanly from pure dark void with zero visible boundary */}
       <div
         className="relative z-10 w-full"
         style={{
           WebkitMaskImage:
-            'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 75%, rgba(0,0,0,0.55) 88%, rgba(0,0,0,0) 99%)',
+            'linear-gradient(to bottom, #000 0%, #000 50%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.4) 68%, rgba(0,0,0,0.1) 74%, rgba(0,0,0,0) 80%)',
           maskImage:
-            'linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 75%, rgba(0,0,0,0.55) 88%, rgba(0,0,0,0) 99%)',
+            'linear-gradient(to bottom, #000 0%, #000 50%, rgba(0,0,0,0.85) 60%, rgba(0,0,0,0.4) 68%, rgba(0,0,0,0.1) 74%, rgba(0,0,0,0) 80%)',
         }}
       >
         {/* Frame Container keeping 682:1024 exact aspect ratio of the hand photo */}
         <div className="relative aspect-[682/1024] w-full">
-          {/* Layer 1: Phone Screen Video (aligned perfectly with phone inner bezel: left 23.46%, top 1.95%, width 52.49%, height 77.15%) */}
+          {/* Layer 1: Phone Screen Video (underlies screen opening with 2px bleed behind natural phone bezel) */}
           <div
             className="absolute z-10 overflow-hidden bg-black"
             style={{
-              left: '23.46%',
-              top: '1.95%',
-              width: '52.49%',
-              height: '77.15%',
-              borderRadius: '8.8% / 4.1%',
+              left: '23.15%',
+              top: '1.75%',
+              width: '53.25%',
+              height: '77.55%',
+              borderRadius: '40px',
             }}
           >
             <video

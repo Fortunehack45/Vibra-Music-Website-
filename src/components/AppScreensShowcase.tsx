@@ -85,9 +85,6 @@ interface AppScreensShowcaseProps {
 export const AppScreensShowcase: React.FC<AppScreensShowcaseProps> = ({ onInspectScreen }) => {
   const galleryRef = useRef<HTMLDivElement>(null);
 
-  // Duplicated screens array for continuous, seamless infinite loop
-  const infiniteScreens = [...EXTENDED_SCREENS, ...EXTENDED_SCREENS];
-
   return (
     <div id="screens">
       {/* PRIMARY DUAL IPHONE SHOWCASE — NOKIA (NOW PLAYING) & MICHAEL JACKSON (ARTIST PAGE) */}
@@ -143,7 +140,7 @@ export const AppScreensShowcase: React.FC<AppScreensShowcaseProps> = ({ onInspec
       {/* EXTENDED MULTI-SCREEN GALLERY — INFINITE LOOP SLIDE WITH VIBRA OPTICAL EDGE REFRACTION */}
       <section
         aria-labelledby="more-screens-heading"
-        className="relative mx-auto max-w-[1280px] border-t border-white/[0.06] px-5 py-16 sm:px-10 sm:py-22 lg:px-14"
+        className="relative mx-auto max-w-[1280px] px-5 py-16 sm:px-10 sm:py-22 lg:px-14"
       >
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
@@ -160,23 +157,20 @@ export const AppScreensShowcase: React.FC<AppScreensShowcaseProps> = ({ onInspec
         <div className="-mx-5 mt-10 sm:mx-0">
           <EdgeRefractionScroller
             scrollerRef={galleryRef}
-            refractionStrength="standard"
-            edgeWidthClassName="w-14 sm:w-24"
-            overlayHeightClassName="top-0 bottom-auto h-[440px] sm:h-[480px]"
             autoScroll={true}
-            autoScrollSpeed={0.55}
-            className="flex gap-7 px-5 pb-4 sm:gap-9 sm:px-1"
+            marqueeAnimationClass="animate-vibra-screens-slide"
+            className="gap-7 sm:gap-9 pr-7 sm:pr-9 pt-3 pb-2 sm:pt-4 sm:pb-3"
           >
-            {infiniteScreens.map((screen, idx) => (
+            {EXTENDED_SCREENS.map((screen) => (
               <div
-                key={`${screen.id}-${idx}`}
+                key={screen.id}
                 className="flex w-[256px] shrink-0 flex-col items-center sm:w-[276px]"
               >
                 <ShowcasePhoneFrame
                   imageSrc={screen.src}
                   alt={screen.alt}
                   label={screen.label}
-                  testId={`vibra-screen-${screen.id}-${idx}`}
+                  testId={`vibra-screen-${screen.id}`}
                   onInspect={() =>
                     onInspectScreen({
                       src: screen.src,

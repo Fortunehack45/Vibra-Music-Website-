@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight, Pause, Volume2 } from 'lucide-react';
+import { Pause, Volume2 } from 'lucide-react';
 import type {
   LiveMusicAlbum,
   LiveMusicDiscoverPayload,
@@ -26,17 +26,44 @@ const ExplicitMark: React.FC = () => (
   </span>
 );
 
+function detectVisitorCountry(): string {
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+    if (tz.includes('Lagos') || tz.includes('Nigeria') || tz.includes('West_Africa')) return 'NG';
+    if (tz.includes('London') || tz.includes('Belfast')) return 'GB';
+    if (tz.includes('Paris')) return 'FR';
+    if (tz.includes('Berlin')) return 'DE';
+    if (tz.includes('Tokyo')) return 'JP';
+    if (tz.includes('Toronto') || tz.includes('Vancouver')) return 'CA';
+    if (tz.includes('Sydney') || tz.includes('Melbourne')) return 'AU';
+    if (tz.includes('Sao_Paulo')) return 'BR';
+    if (tz.includes('Johannesburg')) return 'ZA';
+    if (tz.includes('New_York') || tz.includes('Los_Angeles') || tz.includes('Chicago')) return 'US';
+
+    const lang = (navigator.language || '').split('-')[1];
+    if (lang && lang.length === 2) return lang.toUpperCase();
+  } catch {
+    // fallback
+  }
+  return 'US';
+}
+
 interface AlbumShelfProps {
   title: string;
   albums: LiveMusicAlbum[];
   loading: boolean;
+  activeAlbumId?: string;
+  onSelectAlbum: (album: LiveMusicAlbum) => void;
 }
 
-const AlbumReleaseSlide: React.FC<AlbumShelfProps> = ({ title, albums, loading }) => {
+const AlbumReleaseSlide: React.FC<AlbumShelfProps> = ({
+  title,
+  albums,
+  loading,
+  activeAlbumId,
+  onSelectAlbum,
+}) => {
   const scrollerRef = useRef<HTMLDivElement>(null);
-
-  // Duplicated albums for seamless infinite loop
-  const infiniteAlbums = albums.length > 0 ? [...albums, ...albums] : [];
 
   return (
     <div className="mt-10 sm:mt-12">
@@ -46,14 +73,13 @@ const AlbumReleaseSlide: React.FC<AlbumShelfProps> = ({ title, albums, loading }
         </h3>
       </div>
 
-      {/* Horizontal Album Slide with Vibra Music Optical Liquid-Glass Edge Refraction */}
+      {/* Horizontal Album Slide */}
       <div className="-mx-5 mt-4 sm:mx-0">
         <EdgeRefractionScroller
           scrollerRef={scrollerRef}
-          autoScroll={!loading && infiniteAlbums.length > 0}
-          autoScrollSpeed={0.5}
-          overlayHeightClassName="top-0 bottom-auto h-[166px] sm:h-[208px] lg:h-[228px]"
-          className="flex gap-4 px-5 pb-2 sm:gap-5 sm:px-0"
+          autoScroll={!loading && albums.length > 0}
+          marqueeAnimationClass="animate-vibra-albums-slide"
+          className="gap-4 sm:gap-5 pr-4 sm:pr-5 pt-2 pb-2 sm:pt-3 sm:pb-3"
         >
           {loading
             ? Array.from({ length: 6 }).map((_, idx) => (
@@ -66,33 +92,53 @@ const AlbumReleaseSlide: React.FC<AlbumShelfProps> = ({ title, albums, loading }
                   <div className="mt-1.5 h-3 w-1/2 rounded bg-white/[0.04]" />
                 </div>
               ))
-            : infiniteAlbums.map((album, idx) => (
-                <a
-                  key={`${album.id}-${idx}`}
-                  href={album.externalUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group w-[166px] shrink-0 text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a855f7] sm:w-[208px] lg:w-[228px]"
-                >
-                  <div className="relative aspect-square w-full overflow-hidden rounded-[10px] border border-white/[0.09] bg-[#141313] transition-transform duration-300 group-hover:scale-[1.015]">
-                    <img
-                      src={album.artwork}
-                      alt={`${album.title} by ${album.artist}`}
-                      loading="lazy"
-                      referrerPolicy="no-referrer"
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
+            : albums.map((album) => {
+                const isActive = activeAlbumId === album.id;
+                return (
+                  <button
+                    key={album.id}
+                    type="button"
+                    onClick={() => onSelectAlbum(album)}
+                    className="group w-[166px] shrink-0 text-left focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#a855f7] sm:w-[208px] lg:w-[228px]"
+                  >
+                    <div className="relative aspect-square w-full overflow-hidden rounded-[10px] border border-white/[0.09] bg-[#141313] transition-transform duration-300 group-hover:scale-[1.015]">
+                      <img
+                        src={album.artwork}
+                        alt={`${album.title} by ${album.artist}`}
+                        loading="lazy"
+                        referrerPolicy="no-referrer"
+                        className="h-full w-full object-cover"
+                      />
+                      {isActive && (
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/50">
+                          <div
+                            className="flex h-3.5 items-end gap-[2px]"
+                            aria-hidden="true"
+                          >
+                            <span className="animate-eq-1 h-full w-[2.5px] rounded-full bg-[#c084fc]" />
+                            <span className="animate-eq-2 h-full w-[2.5px] rounded-full bg-[#c084fc]" />
+                            <span className="animate-eq-3 h-full w-[2.5px] rounded-full bg-[#c084fc]" />
+                          </div>
+                        </div>
+                      )}
+                    </div>
 
-                  <div className="mt-2.5 flex items-center gap-1.5">
-                    <span className="truncate text-[13.5px] font-medium leading-tight text-[#f2f1ef] transition-colors group-hover:text-white">
-                      {album.title}
-                    </span>
-                    {album.explicit && <ExplicitMark />}
-                  </div>
-                  <p className="mt-0.5 truncate text-[12.5px] text-[#8a8784]">{album.artist}</p>
-                </a>
-              ))}
+                    <div className="mt-2.5 flex items-center gap-1.5">
+                      <span
+                        className={`truncate text-[13.5px] font-medium leading-tight transition-colors ${
+                          isActive
+                            ? 'text-[#c084fc]'
+                            : 'text-[#f2f1ef] group-hover:text-white'
+                        }`}
+                      >
+                        {album.title}
+                      </span>
+                      {album.explicit && <ExplicitMark />}
+                    </div>
+                    <p className="mt-0.5 truncate text-[12.5px] text-[#8a8784]">{album.artist}</p>
+                  </button>
+                );
+              })}
         </EdgeRefractionScroller>
       </div>
     </div>
@@ -111,7 +157,8 @@ export const VibraDiscoveryShelves: React.FC = () => {
 
   useEffect(() => {
     let active = true;
-    fetch('/api/music/discover')
+    const country = detectVisitorCountry();
+    fetch(`/api/music/discover?country=${encodeURIComponent(country)}`)
       .then(async (res) => {
         if (!res.ok) throw new Error(`Feed unavailable (${res.status})`);
         return (await res.json()) as LiveMusicDiscoverPayload;
@@ -164,14 +211,72 @@ export const VibraDiscoveryShelves: React.FC = () => {
     }
   };
 
+  const handleToggleAlbum = async (album: LiveMusicAlbum) => {
+    if (playingTrack?.id === album.id) {
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
+      setPlayingTrack(null);
+      setIsAudioPlaying(false);
+      return;
+    }
+
+    // Check if Best New Songs has a track by this artist/title
+    const matchedTrack = feed?.bestNewSongs.find(
+      (t) =>
+        t.artist.toLowerCase() === album.artist.toLowerCase() ||
+        t.title.toLowerCase().includes(album.title.toLowerCase())
+    );
+
+    let previewUrl = matchedTrack?.previewUrl;
+
+    if (!previewUrl) {
+      try {
+        const res = await fetch(
+          `/api/music/preview?q=${encodeURIComponent(`${album.title} ${album.artist}`)}`
+        );
+        if (res.ok) {
+          const data = (await res.json()) as { previewUrl?: string };
+          if (data.previewUrl) {
+            previewUrl = data.previewUrl;
+          }
+        }
+      } catch {
+        // Fallback gracefully
+      }
+    }
+
+    const trackObj: LiveMusicTrack = {
+      id: album.id,
+      title: album.title,
+      artist: album.artist,
+      artwork: album.artwork,
+      explicit: album.explicit,
+      externalUrl: album.externalUrl,
+      previewUrl,
+      source: album.source,
+    };
+
+    setPlayingTrack(trackObj);
+    const audio = audioRef.current;
+    if (audio && previewUrl) {
+      audio.src = previewUrl;
+      audio
+        .play()
+        .then(() => setIsAudioPlaying(true))
+        .catch(() => setIsAudioPlaying(false));
+    } else {
+      setIsAudioPlaying(false);
+    }
+  };
+
   const trackColumns = chunkIntoColumns(feed?.bestNewSongs ?? [], TRACKS_PER_COLUMN);
-  const infiniteColumns = trackColumns.length > 0 ? [...trackColumns, ...trackColumns] : [];
 
   return (
     <section
       id="discover"
       aria-labelledby="discover-heading"
-      className="relative z-10 mx-auto max-w-[1280px] border-t border-white/[0.06] px-5 pt-16 pb-10 sm:px-10 sm:pt-22 lg:px-14 lg:pt-26"
+      className="relative z-10 mx-auto max-w-[1280px] px-5 pt-16 pb-10 sm:px-10 sm:pt-22 lg:px-14 lg:pt-26"
     >
       {/* Hidden HTML5 audio element for real 30-second song previews */}
       <audio
@@ -212,20 +317,13 @@ export const VibraDiscoveryShelves: React.FC = () => {
               </span>
             </button>
             <span className="text-[#6f6d6b]">·</span>
-            <a
-              href={playingTrack.externalUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-0.5 text-[#9c9996] transition-colors hover:text-white whitespace-nowrap"
-            >
-              <span>Open</span>
-              <ArrowUpRight className="h-3 w-3" aria-hidden="true" />
-            </a>
+            <span className="text-[11.5px] text-[#8a8784] whitespace-nowrap">
+              Playing in Vibra
+            </span>
           </div>
         ) : (
-          <p className="max-w-[330px] text-[13px] leading-[1.55] text-[#8a8784]">
-            Streamed live from YouTube Music InnerTube &amp; public charts — tap any track to hear a
-            real preview or open the release.
+          <p className="max-w-[340px] text-[13px] leading-[1.55] text-[#8a8784]">
+            Personalized to your region — tap any track or album to hear instant live playback in Vibra.
           </p>
         )}
       </div>
@@ -249,11 +347,10 @@ export const VibraDiscoveryShelves: React.FC = () => {
             <div className="-mx-5 mt-4 sm:mx-0">
               <EdgeRefractionScroller
                 scrollerRef={songsScrollerRef}
-                autoScroll={!loading && infiniteColumns.length > 0}
-                autoScrollSpeed={0.5}
+                autoScroll={!loading && trackColumns.length > 0}
+                marqueeAnimationClass="animate-vibra-songs-slide"
                 isPaused={isAudioPlaying}
-                overlayHeightClassName="inset-y-0"
-                className="flex gap-6 px-5 pb-2 sm:gap-8 sm:px-0"
+                className="gap-6 sm:gap-8 pr-6 sm:pr-8"
               >
                 {loading
                   ? Array.from({ length: 4 }).map((_, colIdx) => (
@@ -277,7 +374,7 @@ export const VibraDiscoveryShelves: React.FC = () => {
                         ))}
                       </div>
                     ))
-                  : infiniteColumns.map((column, colIdx) => (
+                  : trackColumns.map((column, colIdx) => (
                       <div
                         key={colIdx}
                         className="flex w-[280px] shrink-0 flex-col sm:w-[308px]"
@@ -347,18 +444,22 @@ export const VibraDiscoveryShelves: React.FC = () => {
             </div>
           </div>
 
-          {/* 2. New This Week — Live YouTube Music InnerTube Releases */}
+          {/* 2. New This Week — Live Releases */}
           <AlbumReleaseSlide
             title="New This Week"
             albums={feed?.newThisWeek ?? []}
             loading={loading}
+            activeAlbumId={playingTrack?.id}
+            onSelectAlbum={handleToggleAlbum}
           />
 
-          {/* 3. Recent Releases — Live Public Releases */}
+          {/* 3. Recent Releases — Live Releases */}
           <AlbumReleaseSlide
             title="Recent Releases"
             albums={feed?.recentReleases ?? []}
             loading={loading}
+            activeAlbumId={playingTrack?.id}
+            onSelectAlbum={handleToggleAlbum}
           />
         </>
       )}

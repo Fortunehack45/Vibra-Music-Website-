@@ -7,7 +7,6 @@ import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
 import { FourDotBadge } from './components/FourDotBadge';
 import { LegalDocumentView } from './components/LegalDocumentView';
-import { LiveDuoWidget } from './components/LiveDuoWidget';
 import { NebulaHomePhone, type HeroHighlightKey } from './components/NebulaHomePhone';
 import { VibraDiscoveryShelves } from './components/VibraDiscoveryShelves';
 import type { LegalDocType } from './data/legalContent';
@@ -147,16 +146,6 @@ export default function App() {
         style={{ background: MOBILE_AMBIENT_GLOW }}
       />
 
-      {/* Subtle Orbital Concentric Ring Accents in Hero Background */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute right-[8%] top-[130px] hidden h-[640px] w-[640px] rounded-full border border-white/[0.028] lg:block"
-      />
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute right-[15%] top-[205px] hidden h-[490px] w-[490px] rounded-full border border-white/[0.032] lg:block"
-      />
-
       {/* Minimal Architectural Header — Pure Typography, Zero Pill Slop */}
       <header className="relative z-30 mx-auto flex max-w-[1280px] items-center justify-between gap-4 px-5 py-5 sm:px-10 sm:py-7 lg:px-14">
         <a
@@ -229,13 +218,8 @@ export default function App() {
 
           {/* Main Hero Composition: Floating Live Duo + Listen Now Annotation + Hand Holding Phone */}
           <div className="relative mt-8 grid grid-cols-1 items-center gap-8 sm:gap-10 lg:mt-[-48px] lg:grid-cols-12">
-            {/* Left Column: Live Avatars + Listen Now Annotation */}
-            <div className="relative z-20 flex flex-col justify-between gap-8 sm:gap-12 lg:col-span-5 lg:pt-20">
-              {/* Floating Live Presence Widget */}
-              <div className="pl-0 lg:pl-2">
-                <LiveDuoWidget />
-              </div>
-
+            {/* Left Column: Listen Now Annotation */}
+            <div className="relative z-20 flex flex-col justify-end lg:col-span-5 lg:pt-20">
               {/* Listen Now / Annotation Block */}
               <div className="flex items-start gap-4 sm:gap-5 pl-0 lg:pl-14">
                 <FourDotBadge className="mt-0.5" />
@@ -336,7 +320,7 @@ export default function App() {
         {/* RELOCATED KINETIC "VIBRA" INFINITE WORDMARK RIBBON — MONUMENTAL CLOSING SIGNATURE ABOVE FOOTER */}
         <div
           aria-hidden="true"
-          className="pointer-events-none relative w-full overflow-hidden border-t border-white/[0.05] py-8 select-none sm:py-12"
+          className="pointer-events-none relative w-full overflow-hidden py-8 select-none sm:py-12"
         >
           <div className="animate-vibra-ribbon font-display text-[64px] font-normal leading-none tracking-[-0.03em] text-white/[0.065] sm:text-[96px] lg:text-[118px]">
             {[0, 1].map((trackCopy) => (

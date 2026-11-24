@@ -86,6 +86,33 @@
   animation-play-state: paused;
 }
 
+/* GPU-accelerated infinite marquee tracks with zero JS thread overhead and zero lag */
+.animate-vibra-screens-slide {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marqueeLoop 42s linear infinite;
+}
+
+.animate-vibra-albums-slide {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marqueeLoop 46s linear infinite;
+}
+
+.animate-vibra-songs-slide {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  animation: marqueeLoop 54s linear infinite;
+}
+
+.pause-on-hover:hover [data-marquee-track],
+.pause-on-hover:focus-within [data-marquee-track] {
+  animation-play-state: paused;
+}
+
 .marquee-edge-fade {
   -webkit-mask-image: linear-gradient(
     to right,

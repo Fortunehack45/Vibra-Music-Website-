@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowDownToLine, ArrowUpRight, Sparkles } from 'lucide-react';
+import { ArrowDownToLine, ArrowUpRight } from 'lucide-react';
 import { useLatestRelease } from '../utils/useLatestRelease';
 
 interface DownloadSectionProps {
@@ -21,7 +21,7 @@ export const DownloadSection: React.FC<DownloadSectionProps> = ({
     <section
       id="download"
       aria-labelledby="download-heading"
-      className="relative z-20 mx-auto max-w-[1280px] border-t border-white/[0.08] px-5 py-16 sm:px-10 sm:py-24 lg:px-14 lg:py-28"
+      className="relative z-20 mx-auto max-w-[1280px] px-5 py-16 sm:px-10 sm:py-24 lg:px-14 lg:py-28"
     >
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:items-start lg:gap-14">
         {/* Left Editorial Column — Pure Typography, Zero Boxed SaaS Slop */}
@@ -35,12 +35,6 @@ export const DownloadSection: React.FC<DownloadSectionProps> = ({
             <div>
               <div className="flex items-center gap-2">
                 <p className="text-[12px] text-[#8a8784]">Release {release.version}</p>
-                {release.isLiveUpdated && (
-                  <span className="inline-flex items-center gap-1 rounded-full bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium text-emerald-400 ring-1 ring-emerald-500/20">
-                    <Sparkles className="h-2.5 w-2.5" />
-                    Latest
-                  </span>
-                )}
               </div>
               <p className="text-[12px] text-[#5e5c5a]">
                 {release.minAndroid} · {release.packageId}

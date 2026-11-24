@@ -180,7 +180,7 @@ export const EcosystemMarquee: React.FC = () => {
   return (
     <section
       aria-labelledby="ecosystem-heading"
-      className="relative z-20 border-y border-white/[0.06] bg-[#080707] py-14 sm:py-20"
+      className="relative z-20 py-14 sm:py-20"
     >
       <div className="mx-auto max-w-[1280px] px-5 sm:px-10 lg:px-14">
         <div className="mx-auto max-w-[580px] text-center">
