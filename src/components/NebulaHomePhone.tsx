@@ -49,7 +49,7 @@ export const NebulaHomePhone: React.FC<NebulaHomePhoneProps> = ({ highlightedFea
               top: '1.6%',
               width: '53.4%',
               height: '77.8%',
-              borderRadius: '42px',
+              borderRadius: 'clamp(18px, 7.5%, 32px)',
             }}
           >
             <video
