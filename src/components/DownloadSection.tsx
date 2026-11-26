@@ -101,12 +101,12 @@ export const DownloadSection: React.FC<DownloadSectionProps> = ({
             </a>
             <span aria-hidden="true" className="text-[#3d3b39]">·</span>
             <a
-              href={VIBRA_LINKS.recognition}
+              href={VIBRA_LINKS.trace}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex min-h-[36px] items-center gap-1 text-[#d8d6d4] transition-colors hover:text-white"
             >
-              <span>Music Recognition</span>
+              <span>Trace by Vibra Music</span>
               <ArrowUpRight className="h-3 w-3 text-[#686563]" aria-hidden="true" />
             </a>
           </div>

@@ -89,12 +89,12 @@ export const Footer: React.FC<FooterProps> = ({ logoSrc, onOpenLegal, onGoHome }
               </li>
               <li>
                 <a
-                  href={VIBRA_LINKS.recognition}
+                  href={VIBRA_LINKS.trace}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex min-h-[38px] items-center gap-1 py-1 transition-colors hover:text-white"
                 >
-                  <span>Music Recognition</span>
+                  <span>Trace by Vibra Music</span>
                   <ArrowUpRight className="h-3.5 w-3.5 text-[#686563]" aria-hidden="true" />
                 </a>
               </li>

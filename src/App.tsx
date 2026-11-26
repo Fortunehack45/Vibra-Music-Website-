@@ -175,12 +175,12 @@ export default function App() {
             Web Player
           </a>
           <a
-            href={VIBRA_LINKS.recognition}
+            href={VIBRA_LINKS.trace}
             target="_blank"
             rel="noopener noreferrer"
             className="transition-colors hover:text-white whitespace-nowrap"
           >
-            Recognition
+            Trace
           </a>
           <a href="#faq" className="transition-colors hover:text-white whitespace-nowrap">
             FAQ
