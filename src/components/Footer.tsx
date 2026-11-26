@@ -78,6 +78,28 @@ export const Footer: React.FC<FooterProps> = ({ logoSrc, onOpenLegal, onGoHome }
               </li>
               <li>
                 <a
+                  href={VIBRA_LINKS.webApp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-[38px] items-center gap-1 py-1 transition-colors hover:text-white"
+                >
+                  <span>Web Player</span>
+                  <ArrowUpRight className="h-3.5 w-3.5 text-[#686563]" aria-hidden="true" />
+                </a>
+              </li>
+              <li>
+                <a
+                  href={VIBRA_LINKS.recognition}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-[38px] items-center gap-1 py-1 transition-colors hover:text-white"
+                >
+                  <span>Music Recognition</span>
+                  <ArrowUpRight className="h-3.5 w-3.5 text-[#686563]" aria-hidden="true" />
+                </a>
+              </li>
+              <li>
+                <a
                   href={VIBRA_LINKS.github}
                   target="_blank"
                   rel="noopener noreferrer"

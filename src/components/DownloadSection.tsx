@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowDownToLine, ArrowUpRight } from 'lucide-react';
+import { VIBRA_LINKS } from '../data/legalContent';
 import { useLatestRelease } from '../utils/useLatestRelease';
 
 interface DownloadSectionProps {
@@ -83,6 +84,30 @@ export const DownloadSection: React.FC<DownloadSectionProps> = ({
             >
               <span>Release notes</span>
               <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+            </a>
+          </div>
+
+          {/* Web Access & Recognition Redirects */}
+          <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 text-[12.5px] text-[#787573]">
+            <span>Web access:</span>
+            <a
+              href={VIBRA_LINKS.webApp}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-[36px] items-center gap-1 text-[#d8d6d4] transition-colors hover:text-white"
+            >
+              <span>Web Player</span>
+              <ArrowUpRight className="h-3 w-3 text-[#686563]" aria-hidden="true" />
+            </a>
+            <span aria-hidden="true" className="text-[#3d3b39]">·</span>
+            <a
+              href={VIBRA_LINKS.recognition}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-[36px] items-center gap-1 text-[#d8d6d4] transition-colors hover:text-white"
+            >
+              <span>Music Recognition</span>
+              <ArrowUpRight className="h-3 w-3 text-[#686563]" aria-hidden="true" />
             </a>
           </div>
 

@@ -9,7 +9,7 @@ import { FourDotBadge } from './components/FourDotBadge';
 import { LegalDocumentView } from './components/LegalDocumentView';
 import { NebulaHomePhone, type HeroHighlightKey } from './components/NebulaHomePhone';
 import { VibraDiscoveryShelves } from './components/VibraDiscoveryShelves';
-import type { LegalDocType } from './data/legalContent';
+import { VIBRA_LINKS, type LegalDocType } from './data/legalContent';
 import {
   getPathForLegalDoc,
   getSeoMetadataForRoute,
@@ -165,6 +165,22 @@ export default function App() {
           </a>
           <a href="#discover" className="transition-colors hover:text-white whitespace-nowrap">
             Discover
+          </a>
+          <a
+            href={VIBRA_LINKS.webApp}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-white whitespace-nowrap"
+          >
+            Web Player
+          </a>
+          <a
+            href={VIBRA_LINKS.recognition}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition-colors hover:text-white whitespace-nowrap"
+          >
+            Recognition
           </a>
           <a href="#faq" className="transition-colors hover:text-white whitespace-nowrap">
             FAQ

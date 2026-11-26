@@ -51,6 +51,8 @@ export const VIBRA_LINKS = {
   contributing: 'https://github.com/Fortunehack45/Vibra_Music/blob/main/CONTRIBUTING.md',
   securitySource: 'https://github.com/Fortunehack45/Vibra_Music/blob/main/SECURITY.md',
   licenseSource: 'https://github.com/Fortunehack45/Vibra_Music/blob/main/LICENSE',
+  webApp: 'https://app.vibramusic.store',
+  recognition: 'https://vibra-music-recognition.vercel.app',
 } as const;
 
 export const VIBRA_RELEASE = {
